@@ -52,11 +52,3 @@ class UNet(nn.Module):
         u1 = self.up_block1(u1, t_embed)
 
         return self.out(u1)
-
-
-model = UNet(in_channels=3, base_channels=64)
-x = torch.randn(4, 3, 64, 64)  # batch of 4 fake noisy images
-t = torch.tensor([10, 500, 250, 999])
-
-out = model(x, t)
-print(out.shape)  # should be torch.Size([4, 3, 64, 64]) — same shape as input
