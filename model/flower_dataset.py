@@ -16,14 +16,14 @@ class FlowerDataset(Dataset):
 
     def __getitem__(self, index):
         row = self.img_labels.iloc[index]
-        img_path = os.path.join(self.img_dir, row['caption'], row['filename'])
+        img_path = os.path.join(self.img_dir, row['filename'])
         image = Image.open(img_path).convert('RGB')
-        label = row['label']
+        caption = row['caption']
 
         if self.image_transform:
             image = self.image_transform(image)
 
         if self.caption_transform:
-            label = self.caption_transform(label)
+            caption = self.caption_transform(caption)
 
-        return image, label
+        return caption, image
