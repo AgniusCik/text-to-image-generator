@@ -5,13 +5,11 @@ class NoiseSchedule():
         self.timesteps = timesteps
 
         self.betas = torch.linspace(beta_start, beta_end, timesteps, device=device)
-
         self.alphas = 1.0 - self.betas
+        self.alphas_cumprod = torch.cumprod(self.alphas, dim=0)  # fixed: underscore, not dot
 
-        self.alphas.cumprod = torch.cumprod(self.alphas, dim=0)
-
-        self.sqrt_alphas_cumprod = torch.sqrt(self.alphas.cumprod)
-        self.sqrt_one_minus_alpha_cumprod = torch.sqrt(1 - self.alphas.cumprod)
+        self.sqrt_alphas_cumprod = torch.sqrt(self.alphas_cumprod)
+        self.sqrt_one_minus_alpha_cumprod = torch.sqrt(1 - self.alphas_cumprod)
 
     def add_noise(self, x_0, t, noise=None):
         if noise is None:

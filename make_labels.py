@@ -1,22 +1,3 @@
-'''
-import os
-import pandas as pd
-
-data_dir = 'images/train'
-classes = ["daisy", "dandelion", "rose", "sunflower", "tulip"]
-
-rows = []
-for cls in classes:
-    folder = os.path.join(data_dir, cls)
-    for fname in os.listdir(folder):
-        if fname.lower().endswith((".jpg", ".jpeg", ".png")):
-            rows.append({'filename': fname, 'label': cls})
-
-df = pd.DataFrame(rows)
-
-df.to_csv('labels.csv', index=False)
-'''
-
 import os
 import torch
 import pandas as pd
