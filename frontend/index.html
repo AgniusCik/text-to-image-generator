@@ -5,21 +5,33 @@
         <title>Text to Flower Image Generator</title>
         <link rel="stylesheet" href="styles.css">
         <script src="input.js" defer></script>
+        <script type="importmap">
+            {
+                "imports": {
+                    "react": "https://esm.sh/react@latest?dev",
+                    "react-dom/client": "https://esm.sh/react-dom@latest/client?dev",
+                    "react/jsx-runtime": "https://esm.sh/react@latest/jsx-runtime?dev"
+                }
+            }
+        </script>
+        <script src="https://unpkg.com/@babel/standalone@latest/babel.min.js"></script>
     </head>
 
     <body>
-        <div class="head">
-            <h1>Describe a flower</h1>
-        </div>
+        <div class="page">
+            <div class="head">
+                <h1>Describe a flower</h1>
+            </div>
 
-        <div class="promptform">
-            <form id="form">
-                <label for="prompt">Prompt here</label><br>
-                <input type="text" id="prompt" name="prompt" maxlength="100">
-                <button type="submit" id="submit-btn">Generate</button>
-            </form>
-            <p id="status"></p>
-            <img id="result-image" alt="Generated flower" />
+            <div class="promptform">
+                <form id="form">
+                    <label for="prompt">Prompt here</label>
+                    <input type="text" id="prompt" name="prompt" maxlength="100" placeholder="A single red tulip in morning light...">
+                    <button type="submit" id="submit-btn">Generate</button>
+                </form>
+                <p id="status"></p>
+                <img id="result-image" alt="Generated flower" />
+            </div>
         </div>
     </body>
 </html>
