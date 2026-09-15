@@ -1,8 +1,8 @@
 import torch
 import torch.nn as nn
-from sinusoidal_timestep_embed import SinusoidalTimestepEmbed
-from residual_block import ResidualBlock
-from cross_attention import CrossAttention
+from .sinusoidal_timestep_embed import SinusoidalTimestepEmbed
+from .residual_block import ResidualBlock
+from .cross_attention import CrossAttention
 
 class UNet(nn.Module):
     def __init__(self, in_channels=3, base_channels=64, time_embed_dim=256, text_dim=512):
